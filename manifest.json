@@ -1,0 +1,10 @@
+{
+  "id": "obsidian-warren",
+  "name": "Warren",
+  "version": "0.1.0",
+  "minAppVersion": "1.0.0",
+  "description": "Explore your vault by following note connections — trail navigation, graph view, and a collection system for gathering what you find.",
+  "author": "obsidian-warren",
+  "authorUrl": "https://github.com/lwshaban",
+  "isDesktopOnly": false
+}

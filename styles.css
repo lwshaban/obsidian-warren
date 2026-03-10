@@ -1,0 +1,1672 @@
+/* ─── Warren Plugin Styles ─────────────────────────────────────────────────── */
+
+/* CSS Variables */
+.warren-root {
+  --warren-bg: #16161a;
+  --warren-bg2: #1e1e24;
+  --warren-bg3: #262630;
+  --warren-bg4: #30303c;
+  --warren-border: #2e2e3a;
+  --warren-border-sub: #252532;
+  --warren-text: #e0ddd5;
+  --warren-text-muted: #8a8690;
+  --warren-text-dim: #555060;
+  --warren-accent: #d4a574;
+  --warren-accent-muted: #a07850;
+  --warren-accent-glow: rgba(212, 165, 116, 0.12);
+  --warren-collected: #7aab8a;
+  --warren-collected-glow: rgba(122, 171, 138, 0.15);
+  --warren-link: #6a9fba;
+  --warren-tag: #9a85b5;
+  --warren-radius: 4px;
+  --warren-radius-lg: 6px;
+  --font-warren: 'DM Sans', 'Satoshi', var(--font-interface), system-ui, sans-serif;
+
+  background: var(--warren-bg);
+  color: var(--warren-text);
+  font-family: var(--font-warren);
+  font-size: 13px;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  overflow: hidden;
+}
+
+/* ─── Header ─────────────────────────────────────────────────────────────── */
+
+.warren-header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 14px;
+  background: var(--warren-bg2);
+  border-bottom: 1px solid var(--warren-border);
+  flex-shrink: 0;
+  min-height: 42px;
+}
+
+.warren-logo {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.warren-logo-icon {
+  font-size: 16px;
+  line-height: 1;
+}
+
+.warren-logo-name {
+  font-family: Georgia, 'DM Serif Display', serif;
+  font-weight: 700;
+  font-size: 15px;
+  color: var(--warren-accent);
+  letter-spacing: -0.3px;
+}
+
+.warren-header-sep {
+  width: 1px;
+  height: 18px;
+  background: var(--warren-border);
+  margin: 0 2px;
+}
+
+.warren-header-spacer {
+  flex: 1;
+}
+
+/* View toggle */
+.warren-view-toggle {
+  display: flex;
+  background: var(--warren-bg3);
+  border-radius: 5px;
+  padding: 2px;
+  gap: 1px;
+}
+
+.warren-view-btn {
+  background: transparent;
+  border: none;
+  color: var(--warren-text-muted);
+  padding: 3px 11px;
+  border-radius: 3px;
+  cursor: pointer;
+  font-size: 11px;
+  font-weight: 400;
+  font-family: var(--font-warren);
+  transition: all 0.1s;
+}
+
+.warren-view-btn.is-active {
+  background: var(--warren-bg4);
+  color: var(--warren-text);
+  font-weight: 600;
+}
+
+.warren-view-btn:hover:not(.is-active) {
+  color: var(--warren-text);
+}
+
+/* Branch toggle */
+.warren-branch-toggle {
+  background: transparent;
+  border: 1px solid var(--warren-border);
+  color: var(--warren-text-muted);
+  padding: 3px 10px;
+  border-radius: var(--warren-radius);
+  cursor: pointer;
+  font-size: 11px;
+  font-family: var(--font-warren);
+  transition: all 0.1s;
+}
+
+.warren-branch-toggle.is-active {
+  background: var(--warren-accent-glow);
+  border-color: var(--warren-accent-muted);
+  color: var(--warren-accent);
+}
+
+.warren-branch-toggle:hover {
+  color: var(--warren-text);
+}
+
+/* Collected badge */
+.warren-collected-badge {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  background: var(--warren-bg3);
+  border: 1px solid var(--warren-border);
+  padding: 3px 10px;
+  border-radius: 5px;
+  transition: all 0.15s;
+}
+
+.warren-collected-badge.has-items {
+  background: var(--warren-collected-glow);
+  border-color: var(--warren-collected);
+}
+
+.warren-collected-badge-count {
+  color: var(--warren-collected);
+  font-weight: 700;
+  font-size: 13px;
+}
+
+.warren-collected-badge-label {
+  color: var(--warren-text-muted);
+  font-size: 11px;
+}
+
+/* ─── Body ───────────────────────────────────────────────────────────────── */
+
+.warren-body {
+  display: flex;
+  flex: 1;
+  overflow: hidden;
+}
+
+/* ─── Resize handle ──────────────────────────────────────────────────────── */
+
+.warren-resize-handle {
+  width: 4px;
+  flex-shrink: 0;
+  cursor: col-resize;
+  background: transparent;
+  position: relative;
+  z-index: 1;
+  transition: background 0.15s;
+}
+
+.warren-resize-handle:hover,
+.warren-resize-handle:active {
+  background: var(--warren-accent-muted);
+}
+
+/* ─── Panel Shared ───────────────────────────────────────────────────────── */
+
+.warren-panel-header {
+  padding: 8px 12px;
+  border-bottom: 1px solid var(--warren-border-sub);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-shrink: 0;
+}
+
+.warren-panel-title {
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--warren-text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.4px;
+}
+
+.warren-panel-count {
+  font-size: 10px;
+  color: var(--warren-text-dim);
+}
+
+/* ─── Holes Panel ────────────────────────────────────────────────────────── */
+
+.warren-branch-panel-container {
+  width: 210px;
+  min-width: 210px;
+  border-right: 1px solid var(--warren-border);
+  background: var(--warren-bg2);
+  display: flex;
+  flex-direction: column;
+  flex-shrink: 0;
+  overflow: hidden;
+}
+
+.warren-holes-panel {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  overflow: hidden;
+}
+
+.warren-holes-current {
+  padding: 10px 10px 6px;
+  border-bottom: 1px solid var(--warren-border-sub);
+  flex-shrink: 0;
+}
+
+.warren-holes-saved {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  padding: 10px 10px 0;
+}
+
+.warren-holes-section-label {
+  font-size: 9px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color: var(--warren-text-dim);
+  margin-bottom: 6px;
+}
+
+.warren-holes-current-trail {
+  margin-bottom: 8px;
+  min-height: 28px;
+}
+
+.warren-holes-current-summary {
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+}
+
+.warren-holes-current-root {
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--warren-accent);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.warren-holes-current-meta {
+  font-size: 10px;
+  color: var(--warren-text-dim);
+}
+
+.warren-holes-empty {
+  font-size: 11px;
+  color: var(--warren-text-dim);
+  font-style: italic;
+}
+
+.warren-new-hole-btn {
+  width: 100%;
+  margin-top: 2px;
+}
+
+.warren-holes-list {
+  flex: 1;
+  overflow-y: auto;
+  padding-bottom: 8px;
+}
+
+.warren-hole-item {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  padding: 5px 6px;
+  border-radius: var(--warren-radius);
+  margin-bottom: 1px;
+  border: 1px solid transparent;
+  transition: background 0.1s;
+}
+
+.warren-hole-item:hover {
+  background: var(--warren-bg3);
+}
+
+.warren-hole-info {
+  flex: 1;
+  min-width: 0;
+  cursor: pointer;
+}
+
+.warren-hole-name {
+  font-size: 11px;
+  color: var(--warren-text);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.warren-hole-info:hover .warren-hole-name {
+  color: var(--warren-accent);
+}
+
+.warren-hole-meta {
+  font-size: 9px;
+  color: var(--warren-text-dim);
+  margin-top: 1px;
+}
+
+.warren-hole-delete-btn {
+  background: transparent;
+  border: none;
+  color: var(--warren-text-dim);
+  cursor: pointer;
+  font-size: 10px;
+  padding: 0 2px;
+  line-height: 1;
+  opacity: 0;
+  transition: opacity 0.1s;
+  flex-shrink: 0;
+}
+
+.warren-hole-item:hover .warren-hole-delete-btn {
+  opacity: 1;
+}
+
+.warren-hole-delete-btn:hover {
+  color: #c47070;
+}
+
+.warren-action-btn {
+  flex: 1;
+  background: var(--warren-bg3);
+  border: 1px solid var(--warren-border-sub);
+  color: var(--warren-text-muted);
+  padding: 5px 8px;
+  border-radius: var(--warren-radius);
+  cursor: pointer;
+  font-size: 10px;
+  text-align: center;
+  font-family: var(--font-warren);
+  transition: all 0.1s;
+}
+
+.warren-action-btn:hover {
+  background: var(--warren-bg4);
+  color: var(--warren-text);
+}
+
+/* ─── Filter panel (explore mode) ───────────────────────────────────────── */
+
+.warren-filter-header {
+  display: flex;
+  flex-direction: column;
+  padding: 6px 10px 4px;
+  border-bottom: 1px solid var(--warren-border-sub);
+  flex-shrink: 0;
+  gap: 4px;
+}
+
+.warren-filter-header-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 6px;
+}
+
+.warren-filter-header-label {
+  font-size: 10px;
+  font-weight: 600;
+  color: var(--warren-accent);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  flex: 1;
+}
+
+.warren-filter-sort-bar {
+  display: flex;
+  gap: 2px;
+}
+
+.warren-sort-btn {
+  background: transparent;
+  border: 1px solid transparent;
+  color: var(--warren-text-dim);
+  font-size: 9px;
+  padding: 1px 5px;
+  border-radius: 3px;
+  cursor: pointer;
+  font-family: var(--font-warren);
+  transition: all 0.1s;
+}
+
+.warren-sort-btn:hover {
+  color: var(--warren-text);
+  border-color: var(--warren-border);
+}
+
+.warren-sort-btn.is-active {
+  color: var(--warren-accent);
+  border-color: var(--warren-accent-muted);
+  background: var(--warren-accent-glow);
+}
+
+.warren-note-item.is-keyboard-focused {
+  background: var(--warren-bg3);
+  outline: 1px solid var(--warren-accent-muted);
+  outline-offset: -1px;
+}
+
+/* Active column indicator — thin left accent bar */
+.warren-search-panel-container.is-column-active,
+.warren-links-panel-container.is-column-active {
+  border-left: 2px solid var(--warren-accent-muted);
+}
+
+.warren-filter-seed-btn {
+  background: transparent;
+  border: none;
+  color: var(--warren-accent);
+  font-size: 10px;
+  padding: 2px 6px;
+  border-radius: var(--warren-radius);
+  cursor: pointer;
+  font-family: var(--font-warren);
+  white-space: nowrap;
+  flex-shrink: 0;
+  max-width: 90px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  opacity: 0.8;
+  transition: opacity 0.1s;
+}
+
+.warren-filter-seed-btn:hover {
+  opacity: 1;
+  background: var(--warren-accent-glow);
+}
+
+.warren-filter-back-btn {
+  background: transparent;
+  border: 1px solid var(--warren-border);
+  color: var(--warren-text-dim);
+  font-size: 9px;
+  padding: 2px 6px;
+  border-radius: var(--warren-radius);
+  cursor: pointer;
+  font-family: var(--font-warren);
+  white-space: nowrap;
+  flex-shrink: 0;
+  transition: all 0.1s;
+}
+
+.warren-filter-back-btn:hover {
+  color: var(--warren-text);
+  border-color: var(--warren-text-muted);
+}
+
+.warren-link-type-badge {
+  font-size: 10px;
+  font-weight: 700;
+  flex-shrink: 0;
+  width: 14px;
+  text-align: center;
+}
+
+.warren-link-type-badge.is-backlink {
+  color: var(--warren-accent);
+}
+
+.warren-link-type-badge.is-outgoing {
+  color: var(--warren-link);
+}
+
+.warren-link-type-badge.is-both {
+  color: var(--warren-collected);
+}
+
+.warren-unresolved-item {
+  opacity: 0.5;
+}
+
+.warren-unresolved-item .warren-note-name {
+  font-style: italic;
+}
+
+/* ─── Search Panel ───────────────────────────────────────────────────────── */
+
+.warren-search-panel-container {
+  width: 220px;
+  min-width: 0;
+  border-right: 1px solid var(--warren-border);
+  background: var(--warren-bg2);
+  display: flex;
+  flex-direction: column;
+  flex-shrink: 0;
+  overflow: hidden;
+}
+
+/* In columns mode the search panel is an equal-width column, not a narrow sidebar */
+.warren-search-panel-container.warren-search-col-expanded {
+  flex: 1;
+  width: auto;
+  min-width: 0;
+}
+
+/* When search panel becomes the parent/context column (exploration mode) */
+.warren-search-panel-container.is-parent-context {
+  flex: 0 0 220px;
+  width: 220px;
+  min-width: 0;
+  opacity: 0.72;
+}
+
+/* ─── Connections Panel (active yazi-style middle column) ─────────────────── */
+
+.warren-connections-panel-container {
+  flex: 1;
+  min-width: 0;
+  border-right: 1px solid var(--warren-border);
+  background: var(--warren-bg2);
+  display: flex;
+  flex-direction: column;
+  flex-shrink: 0;
+  overflow: hidden;
+}
+
+.warren-connections-panel {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  overflow: hidden;
+}
+
+.warren-connections-header {
+  padding: 6px 10px;
+  border-bottom: 1px solid var(--warren-border-sub);
+  font-size: 10px;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  flex-shrink: 0;
+  background: var(--warren-bg2);
+}
+
+.warren-connections-label {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  color: var(--warren-accent);
+  flex: 1;
+}
+
+.warren-connections-count {
+  color: var(--warren-text-dim);
+  font-size: 10px;
+  flex-shrink: 0;
+}
+
+.warren-connections-list {
+  flex: 1;
+  overflow-y: auto;
+  padding: 2px 4px;
+}
+
+.warren-search-panel {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  overflow: hidden;
+}
+
+.warren-search-input-wrap {
+  display: flex;
+  align-items: center;
+  background: var(--warren-bg3);
+  border-radius: 5px;
+  padding: 5px 9px;
+  border: 1px solid var(--warren-border);
+  gap: 5px;
+  margin: 10px 10px 6px;
+}
+
+.warren-search-icon {
+  color: var(--warren-text-dim);
+  font-size: 12px;
+  flex-shrink: 0;
+}
+
+.warren-search-input {
+  background: transparent;
+  border: none;
+  outline: none;
+  color: var(--warren-text);
+  font-size: 12px;
+  font-family: var(--font-warren);
+  width: 100%;
+}
+
+.warren-search-input::placeholder {
+  color: var(--warren-text-dim);
+}
+
+.warren-search-results {
+  flex: 1;
+  overflow-y: auto;
+  padding: 0 4px 8px;
+}
+
+.warren-search-empty {
+  padding: 12px;
+  color: var(--warren-text-dim);
+  font-size: 11px;
+  font-style: italic;
+}
+
+/* ─── Note Item (shared) ─────────────────────────────────────────────────── */
+
+.warren-note-item {
+  display: flex;
+  align-items: center;
+  padding: 5px 8px;
+  border-radius: var(--warren-radius);
+  cursor: pointer;
+  gap: 5px;
+  margin-bottom: 1px;
+  border: 1px solid transparent;
+  transition: all 0.1s;
+}
+
+.warren-note-item:hover {
+  background: var(--warren-bg3);
+}
+
+.warren-note-item.is-active {
+  background: var(--warren-accent-glow);
+  border-color: var(--warren-accent-muted);
+}
+
+.warren-collect-btn {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  font-size: 9px;
+  color: transparent;
+  width: 11px;
+  flex-shrink: 0;
+  line-height: 1;
+  transition: color 0.1s;
+}
+
+.warren-note-item:hover .warren-collect-btn {
+  color: var(--warren-text-dim);
+}
+
+.warren-collect-btn.is-collected {
+  color: var(--warren-collected) !important;
+}
+
+.warren-note-info {
+  flex: 1;
+  overflow: hidden;
+}
+
+.warren-note-name {
+  font-size: 11px;
+  color: var(--warren-text);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.warren-note-item.is-active .warren-note-name {
+  color: var(--warren-accent);
+  font-weight: 600;
+}
+
+.warren-note-meta {
+  font-size: 9px;
+  color: var(--warren-text-dim);
+  margin-top: 1px;
+}
+
+.warren-note-arrow {
+  color: var(--warren-text-dim);
+  font-size: 10px;
+  flex-shrink: 0;
+  opacity: 0;
+  transition: opacity 0.1s;
+}
+
+.warren-note-item:hover .warren-note-arrow {
+  opacity: 1;
+}
+
+/* ─── Links Panel ────────────────────────────────────────────────────────── */
+
+.warren-links-panel-container {
+  width: 240px;
+  min-width: 0;
+  border-right: 1px solid var(--warren-border);
+  display: flex;
+  flex-direction: column;
+  flex-shrink: 0;
+  overflow: hidden;
+}
+
+.warren-links-panel {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  overflow: hidden;
+}
+
+.warren-links-modebar {
+  display: flex;
+  padding: 6px 8px;
+  gap: 3px;
+  border-bottom: 1px solid var(--warren-border-sub);
+  flex-shrink: 0;
+}
+
+.warren-mode-btn {
+  background: transparent;
+  border: 1px solid transparent;
+  color: var(--warren-text-muted);
+  padding: 2px 7px;
+  border-radius: 3px;
+  cursor: pointer;
+  font-size: 10px;
+  font-weight: 400;
+  font-family: var(--font-warren);
+  transition: all 0.1s;
+}
+
+.warren-mode-btn.is-active {
+  background: var(--warren-accent-glow);
+  border-color: var(--warren-accent-muted);
+  color: var(--warren-accent);
+  font-weight: 600;
+}
+
+.warren-mode-btn:hover:not(.is-active) {
+  color: var(--warren-text);
+}
+
+.warren-links-header {
+  padding: 6px 10px;
+  border-bottom: 1px solid var(--warren-border-sub);
+  font-size: 10px;
+  color: var(--warren-text-muted);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.4px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-shrink: 0;
+}
+
+.warren-links-note-name {
+  color: var(--warren-accent);
+  text-transform: none;
+  font-weight: 400;
+}
+
+.warren-links-count {
+  color: var(--warren-text-dim);
+  font-size: 10px;
+}
+
+.warren-links-list {
+  flex: 1;
+  overflow-y: auto;
+  padding: 2px 4px;
+}
+
+.warren-links-empty {
+  padding: 12px;
+  color: var(--warren-text-dim);
+  font-size: 11px;
+  font-style: italic;
+}
+
+.warren-link-item {
+  /* drill-right style — arrow always shows */
+}
+
+/* ─── Preview Panel ──────────────────────────────────────────────────────── */
+
+.warren-preview-panel-container {
+  flex: 1;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+.warren-preview-panel {
+  flex: 1;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+.warren-preview-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  padding: 8px 14px;
+  border-bottom: 1px solid var(--warren-border);
+  flex-shrink: 0;
+  background: var(--warren-bg2);
+}
+
+.warren-preview-header-title {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--warren-text);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  flex: 1;
+  cursor: pointer;
+}
+
+.warren-preview-header-title:hover {
+  color: var(--warren-accent);
+}
+
+.warren-note-content {
+  flex: 1;
+  overflow-y: auto;
+  padding: 20px 24px;
+  /* Let Obsidian's own theme styles take over */
+  color: var(--text-normal);
+  font-size: var(--font-text-size);
+  line-height: var(--line-height-normal);
+}
+
+/* Unresolved (dangling) wikilinks — dim them so they don't look like real notes */
+.warren-note-content .internal-link.is-unresolved {
+  opacity: 0.4 !important;
+  color: var(--text-muted) !important;
+  text-decoration: underline dotted !important;
+}
+
+.warren-preview-empty {
+  padding: 24px 20px;
+  color: var(--warren-text-dim);
+  font-style: italic;
+}
+
+.warren-preview-btn-row {
+  display: flex;
+  gap: 6px;
+  align-items: center;
+  flex-shrink: 0;
+}
+
+.warren-explore-btn {
+  background: var(--warren-accent-glow);
+  border: 1px solid var(--warren-accent-muted);
+  color: var(--warren-accent);
+  padding: 5px 12px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 11px;
+  font-weight: 600;
+  font-family: var(--font-warren);
+  white-space: nowrap;
+  flex-shrink: 0;
+  transition: all 0.15s;
+}
+
+.warren-explore-btn:hover {
+  background: rgba(212, 165, 116, 0.25);
+  border-color: var(--warren-accent);
+  color: var(--warren-text);
+}
+
+.warren-collect-btn--large {
+  background: var(--warren-bg3);
+  border: 1px solid var(--warren-border);
+  color: var(--warren-text-muted);
+  padding: 5px 12px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 11px;
+  font-weight: 600;
+  font-family: var(--font-warren);
+  white-space: nowrap;
+  flex-shrink: 0;
+  width: auto;
+  transition: all 0.15s;
+}
+
+.warren-collect-btn--large.is-collected {
+  background: var(--warren-collected-glow);
+  border-color: var(--warren-collected);
+  color: var(--warren-collected) !important;
+}
+
+.warren-collect-btn--large:hover {
+  background: var(--warren-bg4);
+  color: var(--warren-text);
+}
+
+.warren-preview-path {
+  font-size: 10px;
+  color: var(--warren-text-dim);
+  margin-bottom: 12px;
+}
+
+.warren-preview-meta {
+  display: flex;
+  gap: 14px;
+  flex-wrap: wrap;
+  margin-bottom: 12px;
+}
+
+.warren-meta-item {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.warren-meta-label {
+  font-size: 9px;
+  color: var(--warren-text-dim);
+  text-transform: uppercase;
+  letter-spacing: 0.3px;
+}
+
+.warren-meta-value {
+  font-size: 11px;
+  color: var(--warren-text);
+  font-weight: 500;
+}
+
+.warren-meta-value.is-accent {
+  color: var(--warren-accent);
+}
+
+.warren-preview-tags {
+  display: flex;
+  gap: 5px;
+  flex-wrap: wrap;
+  margin-bottom: 14px;
+}
+
+.warren-tag {
+  background: rgba(154, 133, 181, 0.1);
+  color: var(--warren-tag);
+  padding: 2px 7px;
+  border-radius: 3px;
+  font-size: 10px;
+}
+
+.warren-tag--small {
+  font-size: 9px;
+  padding: 1px 5px;
+}
+
+.warren-preview-properties {
+  margin-bottom: 14px;
+}
+
+.warren-section-title {
+  font-size: 10px;
+  font-weight: 700;
+  color: var(--warren-text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.4px;
+  margin-bottom: 8px;
+}
+
+.warren-preview-excerpt {
+  padding: 14px 16px;
+  background: var(--warren-bg3);
+  border-radius: var(--warren-radius-lg);
+  border: 1px solid var(--warren-border-sub);
+  line-height: 1.7;
+  color: var(--warren-text-muted);
+  font-size: 12px;
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+
+/* ─── Center area ────────────────────────────────────────────────────────── */
+
+.warren-center {
+  flex: 1;
+  display: flex;
+  overflow: hidden;
+}
+
+/* ─── Graph View ─────────────────────────────────────────────────────────── */
+
+.warren-graph-with-preview {
+  flex: 1;
+  display: flex;
+  overflow: hidden;
+}
+
+.warren-graph-with-preview .warren-graph-container {
+  flex: 1;
+  min-width: 0;
+}
+
+.warren-graph-with-preview .warren-preview-panel-container {
+  width: 260px;
+  min-width: 0;
+  border-left: 1px solid var(--warren-border);
+  overflow: hidden;
+}
+
+.warren-graph-container {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.warren-graph-view {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  overflow: hidden;
+}
+
+.warren-graph-controls {
+  display: flex;
+  align-items: center;
+  padding: 7px 14px;
+  border-bottom: 1px solid var(--warren-border-sub);
+  gap: 8px;
+  flex-wrap: wrap;
+  flex-shrink: 0;
+  background: var(--warren-bg2);
+}
+
+.warren-graph-divider {
+  width: 1px;
+  height: 16px;
+  background: var(--warren-border);
+}
+
+.warren-axis-selector {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.warren-axis-label {
+  font-size: 10px;
+  color: var(--warren-text-dim);
+  font-weight: 600;
+}
+
+.warren-axis-select {
+  background: var(--warren-bg3);
+  border: 1px solid var(--warren-border);
+  color: var(--warren-text);
+  padding: 2px 6px;
+  border-radius: 3px;
+  font-size: 10px;
+  font-family: var(--font-warren);
+  cursor: pointer;
+  outline: none;
+}
+
+.warren-graph-node-count {
+  font-size: 10px;
+  color: var(--warren-text-dim);
+}
+
+.warren-graph-canvas-wrap {
+  flex: 1;
+  position: relative;
+  overflow: hidden;
+  background: radial-gradient(ellipse at center, rgba(38, 38, 48, 0.3) 0%, var(--warren-bg) 80%);
+}
+
+.warren-graph-svg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.warren-graph-tooltip {
+  position: absolute;
+  background: rgba(22, 22, 26, 0.95);
+  border: 1px solid var(--warren-border);
+  border-radius: var(--warren-radius-lg);
+  padding: 8px 12px;
+  pointer-events: none;
+  max-width: 200px;
+  z-index: 10;
+  transform: translateX(-50%);
+}
+
+.warren-tooltip-name {
+  font-weight: 700;
+  font-size: 12px;
+  color: var(--warren-text);
+  margin-bottom: 3px;
+}
+
+.warren-tooltip-meta {
+  font-size: 10px;
+  color: var(--warren-text-dim);
+  margin-bottom: 5px;
+}
+
+.warren-tooltip-tags {
+  display: flex;
+  gap: 3px;
+  flex-wrap: wrap;
+}
+
+/* ─── Collected Sidebar ──────────────────────────────────────────────────── */
+
+.warren-collected-container {
+  width: 195px;
+  min-width: 0;
+  border-left: 1px solid var(--warren-border);
+  background: var(--warren-bg2);
+  display: flex;
+  flex-direction: column;
+  flex-shrink: 0;
+  overflow: hidden;
+  transition: width 0.15s ease, min-width 0.15s ease;
+}
+
+.warren-collected-container.is-collapsed {
+  width: 32px;
+  min-width: 32px;
+}
+
+.warren-collected-container.is-collapsed .warren-collected-title-wrap,
+.warren-collected-container.is-collapsed .warren-collected-list,
+.warren-collected-container.is-collapsed .warren-collected-footer {
+  display: none;
+}
+
+.warren-sidebar-toggle-btn {
+  background: transparent;
+  border: none;
+  color: var(--warren-text-dim);
+  cursor: pointer;
+  font-size: 14px;
+  padding: 0 4px;
+  line-height: 1;
+  flex-shrink: 0;
+  transition: color 0.1s;
+}
+
+.warren-sidebar-toggle-btn:hover {
+  color: var(--warren-text);
+}
+
+.warren-collected-title-wrap {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  flex: 1;
+  min-width: 0;
+}
+
+.warren-collected-sidebar {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  overflow: hidden;
+}
+
+.warren-collected-title {
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--warren-collected);
+}
+
+.warren-collected-count {
+  font-size: 11px;
+  color: var(--warren-collected);
+  font-weight: 700;
+}
+
+.warren-collected-list {
+  flex: 1;
+  overflow-y: auto;
+  padding: 4px;
+}
+
+.warren-collected-empty {
+  padding: 12px;
+  color: var(--warren-text-dim);
+  font-size: 11px;
+  font-style: italic;
+}
+
+.warren-collected-item {
+  display: flex;
+  align-items: center;
+  padding: 5px 7px;
+  border-radius: 3px;
+  gap: 5px;
+  transition: background 0.1s;
+}
+
+.warren-collected-item:hover {
+  background: var(--warren-bg3);
+}
+
+.warren-collected-dot {
+  color: var(--warren-collected);
+  font-size: 8px;
+  flex-shrink: 0;
+}
+
+.warren-collected-name {
+  flex: 1;
+  font-size: 11px;
+  color: var(--warren-text);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  cursor: pointer;
+}
+
+.warren-collected-name:hover {
+  color: var(--warren-accent);
+}
+
+.warren-remove-btn {
+  background: transparent;
+  border: none;
+  color: var(--warren-text-dim);
+  cursor: pointer;
+  font-size: 12px;
+  padding: 0;
+  line-height: 1;
+  opacity: 0;
+  transition: opacity 0.1s;
+}
+
+.warren-collected-item:hover .warren-remove-btn {
+  opacity: 1;
+}
+
+.warren-remove-btn:hover {
+  color: #c47070;
+}
+
+.warren-collected-footer {
+  padding: 8px;
+  border-top: 1px solid var(--warren-border-sub);
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  flex-shrink: 0;
+}
+
+.warren-export-btn {
+  background: var(--warren-bg3);
+  border: 1px solid var(--warren-border-sub);
+  color: var(--warren-text-muted);
+  padding: 5px 8px;
+  border-radius: 3px;
+  cursor: pointer;
+  font-size: 10px;
+  text-align: left;
+  font-family: var(--font-warren);
+  transition: all 0.1s;
+}
+
+.warren-export-btn:hover {
+  background: var(--warren-bg4);
+  color: var(--warren-text);
+}
+
+/* ─── Trail Bar ──────────────────────────────────────────────────────────── */
+
+.warren-trail {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  padding: 6px 14px;
+  background: var(--warren-bg2);
+  border-top: 1px solid var(--warren-border);
+  flex-shrink: 0;
+  overflow-x: auto;
+  min-height: 32px;
+  white-space: nowrap;
+}
+
+.warren-trail-label {
+  font-size: 10px;
+  color: var(--warren-text-dim);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.3px;
+  flex-shrink: 0;
+  margin-right: 2px;
+}
+
+.warren-trail-sep {
+  font-size: 10px;
+  color: var(--warren-text-dim);
+  flex-shrink: 0;
+  margin: 0 2px;
+}
+
+.warren-trail-crumb {
+  font-size: 11px;
+  color: var(--warren-text-muted);
+  cursor: pointer;
+  flex-shrink: 0;
+  padding: 1px 5px;
+  border-radius: 3px;
+  transition: all 0.1s;
+}
+
+.warren-trail-crumb:hover {
+  color: var(--warren-text);
+  background: var(--warren-bg3);
+}
+
+.warren-trail-crumb.is-current {
+  color: var(--warren-accent);
+  font-weight: 600;
+}
+
+.warren-trail-crumb.is-future {
+  opacity: 0.4;
+  color: var(--warren-text-dim);
+}
+
+.warren-trail-sep.is-future {
+  opacity: 0.3;
+}
+
+.warren-trail-empty {
+  font-size: 11px;
+  color: var(--warren-text-dim);
+  font-style: italic;
+}
+
+.warren-trail-seed {
+  font-size: 11px;
+  color: var(--warren-accent);
+  font-style: italic;
+  flex-shrink: 0;
+  opacity: 0.85;
+  padding: 1px 4px;
+  border-radius: var(--warren-radius);
+  transition: all 0.1s;
+}
+
+.warren-trail-seed:hover {
+  opacity: 1;
+  background: var(--warren-accent-glow);
+}
+
+.warren-trail-open-btn {
+  background: transparent;
+  border: 1px solid var(--warren-border);
+  color: var(--warren-text-dim);
+  font-size: 11px;
+  padding: 1px 6px;
+  border-radius: var(--warren-radius);
+  cursor: pointer;
+  margin-left: 6px;
+  flex-shrink: 0;
+  font-family: var(--font-warren);
+  transition: all 0.1s;
+}
+
+.warren-trail-open-btn:hover {
+  color: var(--warren-accent);
+  border-color: var(--warren-accent-muted);
+  background: var(--warren-accent-glow);
+}
+
+/* ─── Loading state ──────────────────────────────────────────────────────── */
+
+.warren-loading {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  color: var(--warren-text-muted);
+  font-size: 13px;
+}
+
+/* ─── Modal input ────────────────────────────────────────────────────────── */
+
+.warren-modal-input {
+  background: var(--warren-bg3);
+  border: 1px solid var(--warren-border);
+  color: var(--warren-text);
+  padding: 6px 10px;
+  border-radius: var(--warren-radius);
+  font-size: 13px;
+  font-family: var(--font-warren);
+  outline: none;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.warren-modal-input:focus {
+  border-color: var(--warren-accent-muted);
+}
+
+/* ─── Scrollbar Styling ──────────────────────────────────────────────────── */
+
+.warren-root ::-webkit-scrollbar {
+  width: 4px;
+  height: 4px;
+}
+
+.warren-root ::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.warren-root ::-webkit-scrollbar-thumb {
+  background: var(--warren-border);
+  border-radius: 2px;
+}
+
+.warren-root ::-webkit-scrollbar-thumb:hover {
+  background: var(--warren-text-dim);
+}
+
+/* ─── Properties panel (inside note content) ────────────────────────────── */
+
+.warren-props {
+  border: 1px solid var(--background-modifier-border);
+  border-radius: var(--radius-s, 4px);
+  margin-bottom: 16px;
+  overflow: hidden;
+}
+
+.warren-props-toggle {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 10px;
+  cursor: pointer;
+  user-select: none;
+  background: var(--background-secondary);
+}
+
+.warren-props-toggle:hover {
+  background: var(--background-modifier-hover);
+}
+
+.warren-props-chevron {
+  font-size: 13px;
+  color: var(--text-muted);
+  transition: transform 0.15s;
+  display: inline-block;
+  line-height: 1;
+}
+
+.warren-props.is-open .warren-props-chevron {
+  transform: rotate(90deg);
+}
+
+.warren-props-label {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--text-muted);
+  flex: 1;
+}
+
+.warren-props-count {
+  font-size: 11px;
+  color: var(--text-faint);
+  background: var(--background-modifier-border);
+  border-radius: 10px;
+  padding: 1px 6px;
+}
+
+.warren-props-body {
+  display: none;
+  padding: 4px 0;
+  border-top: 1px solid var(--background-modifier-border);
+}
+
+.warren-props.is-open .warren-props-body {
+  display: block;
+}
+
+.warren-props-row {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+  padding: 4px 10px;
+  font-size: 12px;
+}
+
+.warren-props-row:hover {
+  background: var(--background-modifier-hover);
+}
+
+.warren-props-key {
+  color: var(--text-muted);
+  font-weight: 500;
+  min-width: 90px;
+  flex-shrink: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.warren-props-val {
+  color: var(--text-normal);
+  flex: 1;
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/* ─── Collapse button on resize handles ─────────────────────────────────── */
+
+.warren-collapse-btn {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 16px;
+  height: 22px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  color: var(--warren-text-dim);
+  font-size: 13px;
+  border-radius: 3px;
+  user-select: none;
+  z-index: 2;
+  line-height: 1;
+  transition: color 0.1s, background 0.1s;
+}
+
+.warren-collapse-btn:hover {
+  color: var(--warren-accent);
+  background: var(--warren-bg3);
+}
+
+/* Panels collapsed via JS-set data-collapsed attribute */
+.warren-search-panel-container[data-collapsed="true"],
+.warren-connections-panel-container[data-collapsed="true"],
+.warren-center[data-collapsed="true"] {
+  overflow: hidden !important;
+}
+
+/* ─── Graph zoom reset button ────────────────────────────────────────────── */
+
+.warren-graph-reset-btn {
+  background: transparent;
+  border: 1px solid var(--warren-border);
+  color: var(--warren-text-dim);
+  padding: 2px 8px;
+  border-radius: 3px;
+  cursor: pointer;
+  font-size: 10px;
+  font-family: var(--font-warren);
+  transition: all 0.1s;
+  white-space: nowrap;
+}
+
+.warren-graph-reset-btn:hover {
+  color: var(--warren-accent);
+  border-color: var(--warren-accent-muted);
+  background: var(--warren-accent-glow);
+}
+
+/* ─── Tag search modal ───────────────────────────────────────────────────── */
+
+.warren-tag-modal-input-wrap {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  margin-top: 8px;
+  margin-bottom: 4px;
+}
+
+.warren-tag-modal-prefix {
+  color: var(--warren-accent);
+  font-size: 12px;
+  font-weight: 600;
+  flex-shrink: 0;
+}
+
+.warren-tag-modal-input {
+  flex: 1;
+  margin: 0 !important;
+}
+
+.warren-tag-suggestions {
+  max-height: 200px;
+  overflow-y: auto;
+  border: 1px solid var(--warren-border);
+  border-radius: var(--warren-radius);
+  margin-bottom: 10px;
+}
+
+.warren-tag-suggestion-item {
+  padding: 6px 10px;
+  cursor: pointer;
+  font-size: 12px;
+  font-family: var(--font-warren);
+  color: var(--warren-text-muted);
+  border-radius: 3px;
+  transition: background 0.1s, color 0.1s;
+}
+
+.warren-tag-suggestion-item:hover,
+.warren-tag-suggestion-item.is-focused {
+  background: var(--warren-bg3);
+  color: var(--warren-text);
+}
+
+.warren-tag-suggestion-item.is-new {
+  color: var(--warren-text-dim);
+  font-style: italic;
+}
+
+.warren-tag-suggestion-item.is-new.is-focused,
+.warren-tag-suggestion-item.is-new:hover {
+  color: var(--warren-accent);
+}
+
+.warren-tag-modal-btn-row {
+  display: flex;
+  justify-content: flex-end;
+  gap: 8px;
+  margin-top: 4px;
+}

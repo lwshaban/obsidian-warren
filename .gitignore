@@ -1,0 +1,7 @@
+node_modules/
+main.js
+data.json
+commit_message.txt
+.claude/
+obsidian-warren-design-doc.md
+vault-rabbit-v2.jsx
